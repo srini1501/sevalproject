@@ -12,7 +12,7 @@ import cloudIcon from "./assets/cloud.png"
 import drizzleIcon from "./assets/drizzle.png"
 // import  from "./"
 
-const WeatherDetails = ({icon ,temp, city, country, lat ,log ,humidity,wind,}) =>{
+const WeatherDetails = ({icon ,temp, city, country, lat ,lon ,humidity,wind,}) =>{
   return(
     <>
     <div className="image">
@@ -28,7 +28,7 @@ const WeatherDetails = ({icon ,temp, city, country, lat ,log ,humidity,wind,}) =
       </div>
       <div>
         <span className="log">longitude</span>
-        <span>{log}</span>
+        <span>{lon}</span>
       </div>
     </div>
     <div className="data-container">
@@ -62,7 +62,8 @@ function App() {
  const [temp, setTemp]=useState(0)
  const [city, setCity]=useState("chennai")
  const [country, setCountry]=useState("IN")
- const [log,setLog]=useState(0)
+ const [lon,setLog]=useState(0)
+
  const [lat,setLat]=useState(0)
  const [humidity,setHumidity]=useState(0)
  const [wind,setWind]=useState(0)
@@ -107,7 +108,7 @@ function App() {
     setCity(data.name)
     setCountry(data.sys.country)
     setLat(data.coord.lat)
-    setLog(data.coord.log)
+    setLog(data.coord.lon)
     const weatherIconCode =data.weather[0].icon;
     setIcon(weatherIconMap[weatherIconCode] || clearIcon)
     setcityNotFound(false)
@@ -140,7 +141,7 @@ useEffect(function(){
             <img src={Search} height={25} width={25}/>
           </div>
         </div>
-        {!loading && !cityNotFound && <WeatherDetails icon={icon} temp={temp} city={city} country={country} lat={lat} log={log} 
+        {!loading && !cityNotFound && <WeatherDetails icon={icon} temp={temp} city={city} country={country} lat={lat} lon={lon} 
         humidity={humidity} wind={wind}/>}
          {loading && <div className='loadingmsg'>Loading...</div>}
    { error && <div className="errormsg">{error}</div>}
