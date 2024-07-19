@@ -146,7 +146,7 @@ useEffect(function(){
          {loading && <div className='loadingmsg'>Loading...</div>}
    { error && <div className="errormsg">{error}</div>}
     {cityNotFound && <div className="citynotfound">City not found</div>}
-    <p className='copyright'>Designed by <span>Srinivasan</span></p>
+    <p className='copyright'>Designed by <span>Sherin Sithara</span></p>
       </div>
      
     </>
